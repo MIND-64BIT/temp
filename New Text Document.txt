@@ -1,0 +1,119 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#define size 5
+
+int front=-1,rear=-1,queue[size],value;
+
+int enqueue();
+int dequeue();
+int display();
+
+int enqueue()
+{
+    if(rear==size-1)
+    {
+        printf("queue is full!no insertion\n");
+        return 1;
+    }
+    else
+    {
+        if(front==-1)
+        {
+            front=0;
+        }
+        printf("enter element to insert\n");
+        scanf("%d",&value);
+        printf("element inserted\n");
+        rear++;
+        queue[rear]=value;
+        
+        
+    }
+}
+
+int dequeue()
+{
+    if(front==-1)
+    {
+    printf("queue is empty!no deletion\n");
+    return 1;
+    
+}
+else
+{
+    printf("element deleted\n");
+    front++;
+    
+    if(front>rear)
+    {
+        printf("queue empty\n");
+        front=-1,rear=-1;
+    }
+}
+
+int display()
+{
+    if(front==-1)
+    {
+        printf("queue is empty!no display\n");
+        return 1;
+        
+    }
+    else{
+        printf("\n");
+        for(int i=front;i<=rear;i++)
+        {
+            printf("%d\t",queue[i]);
+        }
+        printf("\n");
+    
+    }
+}
+int main()
+{
+    int choice;
+    
+    while(1)
+    {
+    printf("\noperations\n");
+    printf("1.enqueue\n");
+    printf("2.dequeue\n");
+    printf("3.display\n");
+    printf("4.exit\n");
+    printf("Enter choice\n");
+    printf("%d",&choice);
+    
+    switch(choice)
+{
+    case 1:
+        enqueue();
+        break;
+      
+    case 2:
+        dequeue();
+        break;
+      
+      
+    case 3:
+        display();
+        break;
+     
+    case 4:
+        printf("program exit......");
+        return 0;
+        break;
+     
+     
+    default:
+        printf("invalid operation");
+        break;
+     
+    
+    }
+
+        
+    }
+    
+    return 0;
+}
+
